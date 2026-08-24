@@ -1,0 +1,15 @@
+Apache Log Analyzer - Summary
+
+I analyzed the Apache access log using my Python project.
+
+The log has 42,131 requests from 139 different IP addresses. The IP 125.20.113.50 made the highest number of requests, with 19,250 requests.
+
+There were 94 failed login attempts. The same IP, 125.20.113.50, had 40 failed login attempts, which makes its activity worth checking.
+
+The most requested URL was /wp-admin/admin-ajax.php with 18,804 requests.
+
+The log had 2,161 client errors and 32 server errors. There were also 380 bot requests, mostly from Python Requests.
+
+The busiest time was 3:00 PM, when there were 6,899 requests.
+
+Overall, the log shows heavy website traffic along with some unusual activity. The main IPs, failed logins and error requests should be checked more closely.
