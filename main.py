@@ -263,4 +263,4 @@ with open("report.json", "w", encoding="utf-8") as file:
 
 print()
 print("Report saved to: report.txt")
-print("JSON report saved to: report.json")
+print("JSON report saved to: report.json")  
