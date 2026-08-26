@@ -91,6 +91,55 @@ if uploaded_file is not None:
     )
 
 
+    st.subheader("Error Details")
+
+    error_type = st.radio(
+        "Select error type",
+        ["4xx Errors", "5xx Errors"]
+    )
+
+    selected_errors = []
+
+    for key, count in result["error_details"].items():
+
+        ip, url, status = key
+
+        if error_type == "4xx Errors":
+
+            if 400 <= status <= 499:
+
+                selected_errors.append({
+                    "IP": ip,
+                    "URL": url,
+                    "Status": status,
+                    "Count": count
+                })
+
+        else:
+
+            if 500 <= status <= 599:
+
+                selected_errors.append({
+                    "IP": ip,
+                    "URL": url,
+                    "Status": status,
+                    "Count": count
+                })
+
+    if selected_errors:
+
+        st.dataframe(
+            selected_errors,
+            use_container_width=True
+        )
+
+    else:
+
+        st.info(
+            "No errors found for the selected type."
+        )
+
+
     st.subheader("Hourly Requests")
 
     st.line_chart(

@@ -239,8 +239,26 @@ with open("report.txt", "w", encoding="utf-8") as report:
     report.write("========================================\n")
 
 
+json_result = result.copy()
+
+if "error_details" in json_result:
+
+    json_error_details = {}
+
+    for key, count in json_result["error_details"].items():
+
+        if isinstance(key, tuple):
+            new_key = " | ".join(str(value) for value in key)
+        else:
+            new_key = str(key)
+
+        json_error_details[new_key] = count
+
+    json_result["error_details"] = json_error_details
+
+
 with open("report.json", "w", encoding="utf-8") as file:
-    json.dump(result, file, indent=4)
+    json.dump(json_result, file, indent=4)
 
 
 print()
